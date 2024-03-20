@@ -16,7 +16,7 @@ function Output() {
   // }]);
   
 
-  const {personalDetails, setPersonalDetails, skills, setSkills, newSkills, setNewSkills, educationInput, setEducationInput,  educationFormData, setEducationFormData, filledForms, setFilledForms} = useContext(DataContext);
+  const {personalDetails, setPersonalDetails, skills, setSkills, newSkills, setNewSkills, educationInput, setEducationInput,  educationFormData, setEducationFormData, filledForms, setFilledForms,  experienceFormData, setExperienceFilledForm, setExperienceFormData, experienceFilledForm} = useContext(DataContext);
 
   // function to format Date
   function formatDayandMonth(dateString){
@@ -88,21 +88,26 @@ function Output() {
           <div className="edu-title w-full bg-gray-100 text-center font-medium p-1 text-2xl rounded-md">
             Experience
           </div>
-          <div className="grid grid-cols-3 mt-5">
-            <div className="col-span-1">
-              <p>08/20 - present</p>
-              <p>Legon-Accra, Ghana</p>
-            </div>
-            <div className="col-span-2">
-              <p className="font-bold">Amalitech Ghana</p>
-              <p className="text-[17px]">Intern Software Development</p>
-              <p>Designed and prototyped user interface patterns for various clients in various industries, 
-                ranging from self-service apps within the telecommunications-sector
-                 to mobile games for IOS and Android</p>
-            </div>
-          </div>
+          {experienceFilledForm.map((form, index) => (
+             <div className="grid grid-cols-3 mt-5" key={index}>
+             <div className="col-span-1">
+               <p>
+               {formatDayandMonth(form.startDate)} -{" "}
+                  {formatDayandMonth(form.endDate)}
+               </p>
+               <p>{form.location}</p>
+             </div>
+             <div className="col-span-2">
+               <p className="font-bold">{form.companyName}</p>
+               <p className="text-[17px]">{form.positionTitle}</p>
+               <p>{form.description}</p>
+             </div>
+           </div>
+
+          ))}
+         
 {/*second second experience */}
-          <div className="grid grid-cols-3 mt-5">
+          {/* <div className="grid grid-cols-3 mt-5">
             <div className="col-span-1">
               <p>08/20 - present</p>
               <p>Legon-Accra, Ghana</p>
@@ -114,7 +119,7 @@ function Output() {
                 Created and usability tested wireframes and prototypes. Produced interactive documentation for quick 
                 onboarding of new researchers.</p>
             </div>
-          </div>
+          </div> */}
         </div>
   {/* *skills */}
         <div  id="education" className="flex flex-col">

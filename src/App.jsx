@@ -34,12 +34,23 @@ const [educationFormData, setEducationFormData] = useState([{
   location: "",
 }]);
 
-const [filledForms, setFilledForms] = useState([]);
+const [filledForms, setFilledForms] = useState([]); // a place to store all saved inputs filled from an education form.
 
-const [educationInput, setEducationInput] = useState("University of Ghana");
+// experience
+
+const [experienceFormData, setExperienceFormData] = useState([{
+  companyName: "",
+  positionTitle: "",
+  startDate: "",
+  endDate: "",
+  location: "",
+  description: "",
+}]);
+
+const [experienceFilledForm, setExperienceFilledForm] = useState([])
 
   return (
-    <DataContext.Provider value={{personalDetails, setPersonalDetails, skills, setSkills, newSkills, setNewSkills, educationInput, setEducationInput, educationFormData, setEducationFormData, filledForms, setFilledForms}}>
+    <DataContext.Provider value={{personalDetails, setPersonalDetails, skills, setSkills, newSkills, setNewSkills, educationFormData, setEducationFormData, filledForms, setFilledForms, experienceFormData, setExperienceFilledForm, setExperienceFormData, experienceFilledForm}}>
     <div className='grid grid-cols-3 bg-gray-100 gap-3'>
       <div className="col-span-1 w-full">
         <Input />

@@ -92,7 +92,9 @@ function Education() {
       startDate: "",
       endDate: "",
       location: "",
+      
   });
+  setToggle(true);
   }
 
   return (
