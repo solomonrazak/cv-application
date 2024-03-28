@@ -7,6 +7,7 @@ import { DataContext } from "../DataContext";
 function Customize() {
   const [displayCustomize, setDisplayCustomize] = useState(false);
   const [displaySketchPicker, setDisplaySketchPicker] = useState(false);
+  const [font, setFont] = useState("sans");
   // const [currentColor, setCurrentColor] = useState("#0A0111");
 
   const {
@@ -23,6 +24,14 @@ function Customize() {
     showExample,
     setShowExample,
   } = useContext(DataContext);
+
+  useEffect(() => {
+    let propertyFont = font === "sans" ? "NotoSans, sans-serif" : font;
+    let boldFont = font === "sans" ? "NotoSans-Bold, sans-serif" : font;
+
+    document.body.style.setProperty("--resume-font", propertyFont);
+    document.body.style.setProperty("--resume-bold", boldFont);
+  }, [font]);
 
   function displayCustomizeButtons() {
     setDisplayCustomize(true);
