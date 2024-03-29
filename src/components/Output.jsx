@@ -1,8 +1,14 @@
-import React, { useContext } from "react";
+// how to print
+//  npm install --save react-to-print 
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { MdOutlineMail } from "react-icons/md";
 import { BsTelephoneFill } from "react-icons/bs";
 import { CiLocationOn } from "react-icons/ci";
 import { DataContext } from "../DataContext";
+import { useReactToPrint } from "react-to-print";
+
+
+
 
 function Output() {
   // const [educationFormData, setEducationFormData] = useState([{
@@ -12,6 +18,9 @@ function Output() {
   //   endDate: "",
   //   location: "",
   // }]);
+  
+  
+  const printRef = useRef();
 
   const {
     personalDetails,
@@ -32,6 +41,8 @@ function Output() {
     experienceFilledForm,
     currentColor,
     setCurrentColor,
+    font,
+    setFont
   } = useContext(DataContext);
 
   // function to format Date
@@ -42,8 +53,26 @@ function Output() {
     return `${month}  ${year}`;
   }
 
+  useEffect(() => {
+    document.body.style.fontFamily = font === "sans" ? "NotoSans, sans-serif" : font; // for a default font or setState font
+  }, [font]);
+
+  // function to handle print
+  const handlePrint = useReactToPrint({
+    content: () => printRef.current,
+    
+  })
+
+  // onClick with inline for two functions simultaneously
+  // onClick = {() => {hideButton(); showModal();}}
+
+  
+
+  
+
   return (
-    <div className="w-full bg-white h-full m-4 mr-3">
+    <div className="w-full bg-white h-full m-4 mr-3" >
+      <div ref={printRef}>
       <header
         className="w-full h-[140px] flex flex-col text-white justify-center items-center gap-5"
         style={{ backgroundColor: currentColor }}
@@ -165,6 +194,12 @@ function Output() {
           </div>
         </div>
       </main>
+      </div>
+    
+      <div className="flex justify-center mt-8">
+        <button className="text-white p-2 rounded-md hover:scale-110 duration-150 transition-all ease-in-out" style={{backgroundColor: currentColor}} onClick={handlePrint}>Click here to print</button>
+      </div>
+
     </div>
   );
 }

@@ -56,7 +56,9 @@ function App() {
   const [showEducation, setShowEducation] = useState(true);
   const [showExperience, setShowExperience] = useState(true);
   const [showSkills, setShowSkills] = useState(true);
-  const [showExample, setShowExample] = useState(true)
+  const [showExample, setShowExample] = useState(true);
+
+  const [font, setFont] = useState("sans");
 
   return (
     <DataContext.Provider
@@ -86,14 +88,16 @@ function App() {
         showSkills,
         setShowSkills,
         showExample, 
-        setShowExample
+        setShowExample,
+        font, 
+        setFont
       }}
     >
       <div className="grid grid-cols-3 bg-gray-100 gap-3">
         <div className="col-span-1 w-full">
           <Input />
         </div>
-        <div className="col-span-2 w-full">
+        <div className="col-span-2 w-full ">
           <Output />
         </div>
       </div>

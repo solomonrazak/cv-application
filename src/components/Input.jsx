@@ -33,6 +33,9 @@ const Input = () => {
       {showEducation && <Education />}
       {showExperience && <Experience />}
       {showSkills && <SkillSet />}
+      <div className="flex justify-center">
+        <button>Preview</button>
+      </div>
     </div>
   );
 };

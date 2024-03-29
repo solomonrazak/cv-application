@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { SketchPicker } from "react-color";
 import { HiDocumentText } from "react-icons/hi2";
 import { TiEdit } from "react-icons/ti";
@@ -7,7 +7,7 @@ import { DataContext } from "../DataContext";
 function Customize() {
   const [displayCustomize, setDisplayCustomize] = useState(false);
   const [displaySketchPicker, setDisplaySketchPicker] = useState(false);
-  const [font, setFont] = useState("sans");
+  // const [font, setFont] = useState("sans");
   // const [currentColor, setCurrentColor] = useState("#0A0111");
 
   const {
@@ -23,14 +23,14 @@ function Customize() {
     setShowSkills,
     showExample,
     setShowExample,
+    font,
+    setFont
   } = useContext(DataContext);
 
   useEffect(() => {
     let propertyFont = font === "sans" ? "NotoSans, sans-serif" : font;
-    let boldFont = font === "sans" ? "NotoSans-Bold, sans-serif" : font;
 
-    document.body.style.setProperty("--resume-font", propertyFont);
-    document.body.style.setProperty("--resume-bold", boldFont);
+    // document.body.style.setProperty("--resume-font", propertyFont);
   }, [font]);
 
   function displayCustomizeButtons() {
@@ -46,6 +46,7 @@ function Customize() {
     setDisplaySketchPicker(!displaySketchPicker);
   }
 
+ 
   function handleColorChange(color) {
     setCurrentColor(color.hex);
   }
@@ -79,7 +80,7 @@ function Customize() {
       </div>
       {displayCustomize && (
         <div className="flex flex-col bg-transparent">
-          <div className="flex flex-col gap-5 mt-10 items-center">
+          <div className="flex flex-col gap-8 mt-10 items-center">
             <div className="flex flex-col bg-white text-slate-900 w-[300px] p-5 rounded-md">
               <h1
                 className="font-medium text-[21px]"
@@ -96,9 +97,44 @@ function Customize() {
                 ></div>
               </div>
             </div>
-            <div className="bg-white w-[100px] h-[100px]">
-              <h1> font sjjdjdjdj</h1>
-              <div></div>
+            <div className="bg-white w-[300px] py-3 px-4 rounded-md">
+              <h1 className="font-medium text-[21px]" style={{color: currentColor}}>Font</h1>
+              <div className="flex justify-between mt-2">
+              <div
+                  className={`flex flex-col border-red-300 border-2 w-[60px] items-center p-1 rounded-lg cursor-pointer ${font === "serif" && "font-bold"}`}
+                  style={{
+                    color: currentColor,
+                    borderColor: currentColor,
+                  }}
+                  onClick={() => setFont("serif")}
+                >
+                  <p className="font-medium">Aa</p>
+                  <p>Serif</p>
+                </div>
+                <div
+                  className={`flex flex-col  border-2 w-[60px] items-center p-1 rounded-lg cursor-pointer ${font === "sans" && "font-bold"}`}
+                  style={{
+                    color: currentColor,
+                    borderColor: currentColor,
+                  }}
+                  onClick={() => setFont("sans")}
+                >
+                  <p className="font-medium">Aa</p>
+                  <p>Sans</p>
+                </div>
+                <div
+                  className={`flex flex-col border-red-400 border-2 w-[60px] items-center p-1 rounded-lg cursor-pointer ${font === "mono" && "font-bold"}`}
+                  style={{
+                    color: currentColor,
+                    borderColor: currentColor,
+                  }}
+                  onClick={() => setFont("mono")}
+                >
+                  <p className="font-medium">Aa</p>
+                  <p>Mono</p>
+                </div>
+
+              </div>
             </div>
           </div>
           {displaySketchPicker && (
