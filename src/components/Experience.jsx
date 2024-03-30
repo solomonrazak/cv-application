@@ -5,14 +5,11 @@ import { MdDelete } from "react-icons/md";
 import { DataContext } from "../DataContext";
 
 function Experience() {
-  // const sampleExperience = ["AmaliTech Ghana", "MTN Ghana"];
+  
   const [displayNewwForm, setDisplayNewwForm] = useState(false);
   const [newFormInput, setNewFormInput] = useState("");
   const [displayedFormIndex, setDisplayedFormIndex] = useState(-1);
-  //   const [newExperienceDetails, setNewExperienceDetails] = useState("")
-  // const [experienceInput, setExperinceInput] = useState(
-  //   sampleExperience.map((experience) => ({ name: experience }))
-  // );
+ 
   const [tog, setTog] = useState(true); // Set initial value to true if you want it to be visible by default
   const {
     experienceFormData,
@@ -47,30 +44,7 @@ function Experience() {
     setDisplayedFormIndex(-1); // Reset displayed form index
   }
 
-  // handle input changes in the initialized experience inputs
-  // function handleExperienceInputChange(e, field) {
-  //   const { value } = e.target;
-  //   setExperienceFormData((prevData) => ({
-  //     ...prevData,
-  //     [field]: value,
-  //   }));
-  // }
-
-  // handle the display of new form
-  // function displayFormm() {
-  //   if (!displayNewwForm) setDisplayNewwForm(true);
-  //   setTog(false);
-  // }
-
-  // handle new form displayed input changes
-  //   function handleNewFormInput(e){
-  //    const {name, value} = e.target;
-  //    setNewFormInput((prevInput) => ({
-  //     ...prevInput,
-  //     [name]: value
-  //    }))
-  // //    console.log(value)
-  //   }
+ 
 
   // handle cancel button
   function handleCancel() {

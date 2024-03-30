@@ -7,10 +7,11 @@ import Experience from "./Experience";
 import SkillSet from "./SkillSet";
 import { DataContext } from "../DataContext";
 
-// const [showPersonalDetails, setShowPersonalDetails] = useState(true);
-// const [showEducation, setShowEducation] = useState(true);
-// const [showExperience, setShowExperience] = useState(true);
-// const [showSkills, setShowSkills] = useState(true);
+
+
+function displayOutput(){
+  setShowEducation(true);
+}
 
 const Input = () => {
   const {
