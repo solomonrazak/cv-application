@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Input from "./components/Input";
 import Output from "./components/Output";
 import { DataContext } from "./DataContext";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -93,13 +96,19 @@ function App() {
         setFont
       }}
     >
-      <div className="grid grid-cols-3 bg-gray-100 gap-3">
+      {/* <div className="grid grid-cols-3 bg-gray-100 gap-3">
         <div className="col-span-1 w-full">
           <Input />
         </div>
         <div className="col-span-2 w-full ">
           <Output />
         </div>
+      </div> */}
+      {/* <Routes>
+        <Route path="/signup" element={<Signup />}/>
+      </Routes> */}
+      <div>
+        <Login />
       </div>
     </DataContext.Provider>
   );
