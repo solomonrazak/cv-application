@@ -8,6 +8,7 @@ import Output from "./components/Output";
 import { DataContext } from "./DataContext";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import { UserAuthContextProvider } from "./context/UserAuthContext";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -104,12 +105,13 @@ function App() {
           <Output />
         </div>
       </div> */}
-      {/* <Routes>
+      <UserAuthContextProvider>
+      <Routes>
+        <Route path="/" element={<Login />}/>
         <Route path="/signup" element={<Signup />}/>
-      </Routes> */}
-      <div>
-        <Login />
-      </div>
+
+      </Routes>
+      </UserAuthContextProvider>
     </DataContext.Provider>
   );
 }

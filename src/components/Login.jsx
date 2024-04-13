@@ -4,6 +4,9 @@ import image from "../assets/images/image.jpeg";
 import goole from "../assets/images/goole.svg";
 
 const Login = () => {
+    function handleSubmit(){
+        
+    }
   return (
     <div className="flex-col w-full h-screen flex md:flex-row">
       <div id="image-sesction" className="relative md:w-1/2 h-full">
@@ -21,6 +24,7 @@ const Login = () => {
         <div>
           <h1 className="font-bold text-[15px] mb-4">Login</h1>
           <p className="text-base">Welcome! Please enter your details.</p>
+          <form onSubmit={handleSubmit}>
           <div className="w-full flex flex-col mt-8">
             <input
               type="email"
@@ -33,7 +37,7 @@ const Login = () => {
               className="w-[350px] text-black border-b py-2 border-slate-900 outline-none focus:outline-none pl-1"
             />
             <div className="bg-blue-400 mt-8 text-center text-white rounded-md hover:bg-blue-600">
-              <button className="p-2 font-medium text-[17px]">Log In</button>
+              <button className="p-2 font-medium text-[17px]" type="submit">Log In</button>
             </div>
             <p className="flex justify-center my-3 font-medium">or</p>
             <div className="flex justify-center gap-4 items-center border border-black font-medium p-2 rounded-md cursor-pointer">
@@ -41,6 +45,7 @@ const Login = () => {
               Sign in with Google
             </div>
           </div>
+          </form>
         </div>
 
         <div className="text-black mb-[-10px]">
