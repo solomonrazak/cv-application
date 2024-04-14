@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate, useNavigation } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
 
 const Signup = () => {
@@ -18,10 +18,11 @@ const Signup = () => {
         setError("")
         try {
             await signUp(email, password);
-            navigate("/")
+            navigate("/") // navigate to login or home page
         }
         catch(err){
             setError(err.message);
+            alert(error)
         }
 
     }

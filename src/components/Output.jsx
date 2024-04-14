@@ -1,23 +1,20 @@
 // how to print
 //  npm install --save react-to-print 
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { MdOutlineMail } from "react-icons/md";
 import { BsTelephoneFill } from "react-icons/bs";
 import { CiLocationOn } from "react-icons/ci";
 import { DataContext } from "../DataContext";
 import { useReactToPrint } from "react-to-print";
+import { useUserAuth } from "../context/UserAuthContext";
 
 
 
 
 function Output() {
-  // const [educationFormData, setEducationFormData] = useState([{
-  //   school: "",
-  //   degree: "",
-  //   startDate: "",
-  //   endDate: "",
-  //   location: "",
-  // }]);
+const navigate = useNavigate();
+const {user, logOut} = useUserAuth();
   
   
   const printRef = useRef();
@@ -66,12 +63,25 @@ function Output() {
   // onClick with inline for two functions simultaneously
   // onClick = {() => {hideButton(); showModal();}}
 
+
+  //logout function
+  const handleLogout = async () => {
+    try{
+      await logOut()
+      navigate("/")
+
+    }
+    catch(err){
+      console.log(err.message)
+      
+    }
+  }
   
 
   
 
   return (
-    <div className="w-full bg-white h-full m-4 mr-3" >
+    <div className="w-full bg-white h-full m-4 mr-3">
       <div ref={printRef}>
       <header
         className="w-full h-[140px] flex flex-col text-white justify-center items-center gap-5"
@@ -198,6 +208,9 @@ function Output() {
     
       <div className="flex justify-center mt-8">
         <button className="text-white p-2 rounded-md hover:scale-110 duration-150 transition-all ease-in-out" style={{backgroundColor: currentColor}} onClick={handlePrint}>Click here to print</button>
+      </div>
+      <div className="flex justify-center mt-[5rem]">
+        <button className="bg-blue-400 text-white px-2 py-1 rounded-md" onClick={handleLogout}>Click here to logout</button>
       </div>
 
     </div>
