@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate} from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
+import goole from "../assets/images/image.jpeg";
 
 const Signup = () => {
 
@@ -29,7 +30,7 @@ const Signup = () => {
 
     const navigate = useNavigate()
   return (
-    <div className="w-screen">
+    <div className="w-screen h-screen" style={{backgroundImage: `url(${goole})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
     <div className="w-full flex justify-center mx-auto">
        <form onSubmit={handleSubmit}>
       <div className="flex flex-col justify-center bg-gray-100 p-10 mt-11 rounded-md shadow-lg">
