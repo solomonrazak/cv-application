@@ -72,7 +72,7 @@ function handleDeleteSkill(index){
         </button>
       </div>
       {toggled && (
-        <div className="w-full mx-auto flex flex-col justify-center">
+        <div className="w-full mx-auto flex flex-col justify-center items-center">
           
           {skills.map((skill, index) => (
             <div key={index} className="relative">

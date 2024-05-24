@@ -36,8 +36,8 @@ return signInWithEmailAndPassword(auth, email, password)
         return signInWithPopup(auth, googleAuthProvider);
     }
     // Reset password function
-    function resetPassword(){
-        return sendPasswordResetEmail(auth, email)
+    async function resetPassword(){
+        return await sendPasswordResetEmail(auth, email)
 
     }
 

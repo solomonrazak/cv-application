@@ -62,7 +62,7 @@ function Customize() {
   }
   return (
     <div>
-      <div className="flex flex-col bg-white items- p-4 rounded-md mx-4">
+      <div className="flex flex-col bg-white items-center p-4 rounded-md w-[24rem] md:w-full mx-auto">
         <div
           className="bg-slate-100 flex flex-col items-center w-full p-2 rounded-md cursor-pointer"
           onClick={displayContentBack}

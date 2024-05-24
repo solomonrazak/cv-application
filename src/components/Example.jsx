@@ -36,7 +36,7 @@ function Example() {
    
   }
   return (
-    <div className="bg-white flex flex-col justify-around md:w-96 h-12 p-2 mx-auto rounded-md md:flex md:flex-row cursor-pointer">
+    <div className="bg-white flex justify-around gap-4 p-2 w-96 h-12 md:p-2 mx-auto rounded-md md:flex md:flex-row cursor-pointer">
       <div className="flex justify-around items-center gap-2 group hover:scale-110 duration-200 transition-all ease-in-out" onClick={clearAll}>
       <MdDelete className="text-red-600"/>
       <p className="text-red-600">Clear Resume</p>

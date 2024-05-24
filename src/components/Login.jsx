@@ -9,6 +9,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showPasswordDialogue, setShowPasswordDialogue] = useState(false);
+  const [resetEmail, setResetEmail] = useState(""); // New state for reset email
+//   const [resetEmail, setResetEmail] = useState("");
 
   const { logIn, googleSignIn, resetPassword } = useUserAuth();
   const navigate = useNavigate();
@@ -37,28 +39,26 @@ const Login = () => {
     }
   };
 
-  const isValidEmail = (email) => {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(email);
-  };
+//   const isValidEmail = (email) => {
+//     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+//     return emailRegex.test(email);
+//   };
 
   // function to handle password reset
   const handlePasswordReset = async (e) => {
     e.preventDefault();
-    
-
-    if (!isValidEmail(email)) {
-      alert("Please enter a valid email address");
-      return;
-    }
+   
 
     try {
-      await resetPassword(email); // assuming resetPassword accepts an email parameter
-      alert("Password reset email has been sent");
-      setShowPasswordDialogue(false);
+     await resetPassword(email)
+      
+      alert("Password reset email has been sent: check your inbox");
+    //   setShowPasswordDialogue(false);
     } catch (err) {
-      console.log(err.message);
-      alert(err.message);
+        if (err.code === 'auth/user-not-found') {
+            alert('User not found, try again!')
+            setEmail('')
+          }
     }
    
   };
@@ -112,10 +112,15 @@ const Login = () => {
                 </p>
                 {showPasswordDialogue && (
                   <div className="h-[20px] bg-gray-500 flex flex-col absolute top-[99%] md:top-[47%] right-[5%] z-10 gap-2">
+                    
                     <input
+                    id="resetpass"
                       type="email"
                       className="w-[230px] border-2 border-slate-400 pl-3"
+                      value={resetEmail}
                       placeholder="Enter email here"
+                      onChange={(e) => setResetEmail(e.target.value)}
+                      required
                     />
                     <button
                       className="bg-slate-400 w-[150px] rounded-md ml-[20%] text-white hover:bg-slate-700"

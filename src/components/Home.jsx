@@ -55,6 +55,12 @@ const Home = () => {
       const [showExample, setShowExample] = useState(true);
     
       const [font, setFont] = useState("sans");
+      const [preview, setPreview] = useState(false);
+      
+      const showPreview = () => {
+        setPreview(true)
+      }
+     
 
   return (
     <DataContext.Provider
@@ -88,13 +94,20 @@ const Home = () => {
         font, 
         setFont
       }}>
-    <div className="grid grid-cols-3 bg-gray-100 gap-3">
-        <div className="col-span-1 w-full">
+    <div className="grid grid-cols-1 md:grid-cols-3 bg-gray-100 gap-3">
+      
+        <div className={`col-span-1 w-full ${!preview ? "block" : "hidden"}`}>
           <Input />
         </div>
-        <div className="col-span-2 w-full ">
+
+        
+        <div className={`md:col-span-2 w-full md:block ${preview ? "block": "hidden"}`}>
           <Output />
         </div>
+
+        <div className="flex justify-center md:hidden">
+        <button onClick={showPreview}>Preview</button>
+      </div>
       </div>
       </DataContext.Provider>
   )

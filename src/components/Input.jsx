@@ -27,16 +27,14 @@ const Input = () => {
     setShowExample,
   } = useContext(DataContext);
   return (
-    <div className="bg-transparent w-full p-4 space-y-8 flex flex-col min-h-full m-4 rounded-md">
+    <div className="bg-transparent w-full py-2 px-1 md:p-4 space-y-4 md:space-y-8 flex flex-col min-h-full md:m-4 rounded-md">
       <Customize />
       {showExample && <Example /> }
       {showPersonalDetails && <PersonalDetails />}
       {showEducation && <Education />}
       {showExperience && <Experience />}
       {showSkills && <SkillSet />}
-      <div className="flex justify-center">
-        <button>Preview</button>
-      </div>
+      
     </div>
   );
 };
