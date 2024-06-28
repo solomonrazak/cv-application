@@ -2,9 +2,14 @@ import React, {useState} from 'react';
 import { DataContext } from '../DataContext';
 import Input from './Input';
 import Output from './Output';
+import { useLocation } from 'react-router-dom';
 
 
 const Home = () => {
+
+  const {state} = useLocation();
+  const fullname = state?.fullname || 'New user'
+
     const [personalDetails, setPersonalDetails] = useState({
         fullname: "Solomon Razak",
         email: "solomonrazak99@gmail.com",
@@ -94,7 +99,10 @@ const Home = () => {
         font, 
         setFont
       }}>
+        <div>
+          <p>Hi {fullname} you are welcome</p>
     <div className="grid grid-cols-1 md:grid-cols-3 bg-gray-100 gap-3">
+      
       
         <div className={`col-span-1 w-full ${!preview ? "block" : "hidden"}`}>
           <Input />
@@ -107,6 +115,7 @@ const Home = () => {
 
         <div className="flex justify-center md:hidden">
         <button onClick={showPreview}>Preview</button>
+      </div>
       </div>
       </div>
       </DataContext.Provider>

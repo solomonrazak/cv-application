@@ -7,6 +7,7 @@ import { useUserAuth } from "../context/UserAuthContext";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
   const [error, setError] = useState("");
   const [showPasswordDialogue, setShowPasswordDialogue] = useState(false);
   const [resetEmail, setResetEmail] = useState(""); // New state for reset email
@@ -20,7 +21,11 @@ const Login = () => {
     setError("");
     try {
       await logIn(email, password);
-      navigate("/home");
+      navigate("/home", {
+        state: {
+          fullname: fullName,
+        }
+      });
     } catch (err) {
       setError(err.message);
       alert(error);
@@ -82,15 +87,24 @@ const Login = () => {
           <p className="text-base">Welcome! Please enter your details.</p>
           <form onSubmit={handleSubmit}>
             <div className="w-full flex flex-col mt-8">
+            <input
+                type="text"
+                placeholder="Full Name"
+                value={fullName}
+                className="w-[350px] text-slate-900 border-b py-2 border-slate-900 outline-none focus:outline-none pl-1 mb-5"
+                onChange={(e) => setFullName(e.target.value)}
+              />
               <input
                 type="email"
                 placeholder="Email"
+                value={email}
                 className="w-[350px] text-slate-900 border-b py-2 border-slate-900 outline-none focus:outline-none pl-1 mb-5"
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Password"
+                value={password}
                 className="w-[350px] text-black border-b py-2 border-slate-900 outline-none focus:outline-none pl-1"
                 onChange={(e) => setPassword(e.target.value)}
               />
