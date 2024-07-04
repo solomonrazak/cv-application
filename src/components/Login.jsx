@@ -72,11 +72,11 @@ const Login = () => {
     <div className="flex-col w-full h-screen flex md:flex-row relative">
       <div id="image-sesction" className="relative md:w-1/2 h-full">
         <img src={image} alt="logo" className="object-cover h-full" />
-        <div className="absolute top-[25%] text-center text-gray-700 leading-[4rem] font-bold text-[35px]">
-          <h1 className="]">
+        <div className="absolute top-[25%] text-center text-slate-950 leading-[4rem] font-bold text-[35px]">
+          <h1 className="px-5">
             Create the perfect resume to land you your dream job.
           </h1>
-          <p className="">Sign up for free now!</p>
+          <p className="px-5 ml-[-8px]">Sign up for free now!</p>
         </div>
       </div>
       <div className="px-5 pt-5 mt-8 mx-7 flex flex-col space-y-[35px] pl-10 pb-3">
@@ -102,7 +102,7 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
-                type="text"
+                type="password"
                 placeholder="Password"
                 value={password}
                 className="w-[350px] text-black border-b py-2 border-slate-900 outline-none focus:outline-none pl-1"

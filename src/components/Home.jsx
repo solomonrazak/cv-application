@@ -99,8 +99,11 @@ const Home = () => {
         font, 
         setFont
       }}>
-        <div>
-          <p>Hi {fullname} you are welcome</p>
+        <div className="relative">
+        <div className="bg-white w-[22rem] p-3 h-12 rounded-md fixed top-2 left-7 border border-blue-400">
+        <p className="text-center font-medium">Hi <span className='font-medium text-blue-400'>{fullname}</span> you are welcome!</p>
+        </div>
+          
     <div className="grid grid-cols-1 md:grid-cols-3 bg-gray-100 gap-3">
       
       
